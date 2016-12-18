@@ -1,3 +1,8 @@
+/* Copyright 2016 by
+ * Christopher Aicher
+ * aicher83128@gmail.com
+ * */
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -36,9 +41,6 @@ namespace Heat
             return l;
         }
 
-
-
-        // Zwischen jeder Farbe liegen die Steps
         public static List<Color> GetGradients(List<Color> colors, int steps)
         {
             if (steps <= 2) { throw new NotSupportedException(); }
@@ -47,8 +49,7 @@ namespace Heat
 
             for (int i=0; i < colors.Count -1; i++)
             {
-                foreach(Color c in GetGradients(colors[i], colors[i+1], steps))
-                {l.Add(c);}
+                foreach(Color c in GetGradients(colors[i], colors[i+1], steps)) { l.Add(c); }
 
                 l.RemoveAt(l.Count-1);
             }
