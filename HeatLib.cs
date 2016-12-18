@@ -23,18 +23,13 @@ namespace Heat
 
             List<Color> l = new List<Color>();
 
-            double stepA = ((end.A - start.A) / (double)(steps - 1));
-            double stepR = ((end.R - start.R) / (double)(steps - 1));
-            double stepG = ((end.G - start.G) / (double)(steps - 1));
-            double stepB = ((end.B - start.B) / (double)(steps - 1));
-
             for (int i = 0; i < steps; i++)
             {
                 l.Add(Color.FromArgb(
-                    start.A + (int)(stepA * i),
-                    start.R + (int)(stepR * i),
-                    start.G + (int)(stepG * i),
-                    start.B + (int)(stepB * i))
+                    start.A + (int)(((end.A - start.A) / (steps - 1.0)) * i),
+                    start.R + (int)(((end.R - start.R) / (steps - 1.0)) * i),
+                    start.G + (int)(((end.G - start.G) / (steps - 1.0)) * i),
+                    start.B + (int)(((end.B - start.B) / (steps - 1.0)) * i))
                 );
             }
 
@@ -71,7 +66,6 @@ namespace Heat
             }
 
             if (include_end) { yield return end; }
-
         }
 
         private class ColorInterpolator
